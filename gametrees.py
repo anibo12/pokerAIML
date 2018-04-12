@@ -111,8 +111,8 @@ class  BeginNode(Node):
     def get_children(self):
         self.children=[]
         temp_deck=[]
-        for rank in Card.STR_RANKS:
-            for suit in ("s","h"):
+        for suit in ("s","h"):
+            for rank in Card.STR_RANKS:
                 temp_deck.append(Card.new(rank + suit))
 
         hands_combination=[]
@@ -276,7 +276,7 @@ class ActionNode(Node):
                                 # if the opponent check,create an actionnode which can create cardnode as children
                                 elif temp_action==Check:
                                     if len(self.board)==5:
-                                        self.children.append(ActionNode(self, self.hands, self.board, self.stack, self.pot,self.current_bet, self.self_bet, self.position, reason="Show down"))
+                                        self.children.append(TerminalNode(self, self.hands, self.board, self.stack, self.pot,self.current_bet, self.self_bet, self.position, reason="Show down"))
                                     else:
                                         self.children.append(ActionNode(self, self.hands, self.board,self.stack,self.pot,self.current_bet, self.self_bet, self.position, previous_action=self.previous_action, flip=True))
                                 # if the opponent bet half of the pot,create an actionnode
@@ -369,3 +369,4 @@ class TerminalNode(Node):
 
 tree=Gametree()
 tree.build()
+
