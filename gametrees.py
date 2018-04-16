@@ -180,7 +180,7 @@ class CardNode(Node):
 
 """flip: determine whether to flip card(s)
 previous_action: the action your opponent did(mostly, it won't be used. When ur opponent fold,create the terminal node)
-if there is no previous action,  the default value is -1
+if there is no previous action,  the default value is Nothing
 """
 class ActionNode(Node):
     def __init__(self,parent,hands,board,stack,pot,current_bet,self_bet,position,previous_action=Nothing,flip=False):
