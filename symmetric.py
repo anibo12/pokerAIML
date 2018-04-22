@@ -24,6 +24,25 @@ int_to_char = {
 }
 
 
+rank_int_to_char = {
+
+        0: '2',
+        1: '3',
+        2: '4',
+        3: '5',
+        4: '6',
+        5: '7',
+        6: '8',
+        7: '9',
+        8: 'T',
+        9: 'J',
+        10: 'Q',
+        11: 'K',
+        12: 'A'
+        
+}
+
+
 
 ##get_suit_int()
 #'s': 1 --- spades
@@ -127,7 +146,7 @@ def do_swap(card, swap):
     char_two = swap[1]
     
     if(Card.get_suit_int(card) == char_to_int[char_one]):
-        return Card.new(str(Card.get_rank_int(card) + 2) + char_two)
+        return Card.new(rank_int_to_char[Card.get_rank_int(card)] + char_two)
     else:
         return card
     
@@ -135,16 +154,18 @@ def do_swap(card, swap):
     
 #EXAMPLES
 hand = []
-hand.append(Card.new("7h"))
-hand.append(Card.new("8d"))
+hand.append(Card.new("4c"))
+hand.append(Card.new("Ac"))
 
-
+print("Original hand: ")
 Card.print_pretty_cards(hand)
 
 s = find_swap(hand)
 new_hand = make_swaps(hand, s)
 
+
 if(new_hand != 0):
+    print("\nNew hand: ")
     Card.print_pretty_cards(new_hand)
 
 
